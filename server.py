@@ -133,7 +133,7 @@ def get_local_ip():
 
 if __name__ == "__main__":
     ip_address = get_local_ip()
-    port = 5000
+    port = 8080
     print(f"[INFO] Server started at: http://{ip_address}:{port}/")
     try:
         app.run(host="0.0.0.0", port=port, debug=True)
