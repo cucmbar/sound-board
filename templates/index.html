@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Soundboard</title>
+</head>
+<body>
+    <h1>Local Network Soundboard</h1>
+    <p>Welcome | <a href="{{ url_for('logout') }}">Logout</a></p>
+
+    <!-- Play sound buttons -->
+    {% for sound in sounds %}
+        <button onclick="playSound('{{ sound }}')">{{ sound }}</button>
+    {% endfor %}
+
+    <h2>Upload New Sound</h2>
+    <form action="/upload" method="post" enctype="multipart/form-data">
+        <input type="file" name="file" accept=".mp3,.wav,.ogg">
+        <button type="submit">Upload</button>
+    </form>
+
+    <script>
+        function playSound(sound) {
+            fetch(`/play/${sound}`);
+        }
+    </script>
+</body>
+</html>
